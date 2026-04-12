@@ -8,12 +8,14 @@ harpoon:setup({
 })
 
 require("which-key").add({
-    { "<leader>f", group = "Files" },
+    { "<leader>f", group = "Files/Find" },
+    { "<leader>s", group = "Search" },
     { "<leader>q", group = "Quit" },
     { "<leader>g", group = "Go(to)" },
     { "<leader>c", group = "Code" },
     { "<leader>b", group = "Buffers" },
     { "<leader>h", group = "Help" },
+    { "<leader>w", group = "Windows" },
     { "<leader>1", hidden = true },
     { "<leader>2", hidden = true },
     { "<leader>3", hidden = true },
@@ -24,6 +26,11 @@ require("which-key").add({
 key("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
 key("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find files" })
 key("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep files" })
+
+-- === group: (s)earch ===
+key("n", "<leader>st", function() Snacks.picker.todo_comments() end, { desc = "Find all todo's" })
+key("n", "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
+    { desc = "Find only Todo/Fix/Fixme" })
 
 -- === group: (q)uit ===
 key("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Safe quit (all)" })
@@ -67,6 +74,27 @@ key("n", "<C-n>", function() harpoon:list():next() end, { desc = "Harpoon Next" 
 -- === group: (h)elp ===
 key("n", "<leader>hn", function() Snacks.picker.help() end, { desc = "Search nvim docs" })
 
+-- === group: (w)indows ===
+-- Splits
+key("n", "<leader>w|", "<C-W>v", { desc = "Split right (Vertical)" })
+key("n", "<leader>w-", "<C-W>s", { desc = "Split below (Horizontal)" })
+
+-- Control
+key("n", "<leader>w=", "<C-W>=", { desc = "Make splits equal" })
+key("n", "<leader>wd", "<cmd>close<cr>", { desc = "Close current split" })
+
+-- === Window navigation ===
+key("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+key("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+key("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+key("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
+-- === Change window size ===
+key("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+key("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+key("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+key("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 -- === Aliases ===
 key("n", "<leader>,", function()
     Snacks.picker.buffers({
@@ -91,3 +119,7 @@ end, { desc = "Smart Find Files" })
 key("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep files" })
 
 key({ "n", "v" }, "-", "<cmd>Oil<cr>", { desc = "Open Oil", silent = true })
+
+-- === Other ===
+key("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo" })
+key("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Prev todo" })
