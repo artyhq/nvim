@@ -9,6 +9,7 @@ return {
             python = { "ruff_fix", "ruff_format" },
             javascript = { "prettier" },
             nix = { "nixpkgs-fmt" },
+            go = { "goimports", "gofumpt" },
         },
 
         format_on_save = {
