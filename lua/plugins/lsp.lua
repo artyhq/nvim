@@ -4,6 +4,7 @@ return {
     config = function()
         vim.lsp.enable({
             "lua_ls",
+            "nixd",
             "pyright",
             "gopls",
         })
