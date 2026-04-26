@@ -1,10 +1,20 @@
 return {
-  "ibhagwan/fzf-lua",
-  -- optional for icon support
-  dependencies = { "nvim-mini/mini.icons" },
-  ---@module "fzf-lua"
-  ---@type fzf-lua.Config|{}
-  ---@diagnostic disable: missing-fields
-  opts = {}
-  ---@diagnostic enable: missing-fields
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-mini/mini.icons" },
+    lazy = false,
+    opts = {
+        winopts = {
+            border  = "single",
+            preview = {
+                border = "single",
+            },
+        },
+        fzf_opts = {
+            ["--border"] = "none",
+            ["--info"]   = "inline",
+        },
+        files = {
+            hidden = true,
+        },
+    },
 }
