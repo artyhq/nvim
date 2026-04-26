@@ -7,6 +7,7 @@ return {
             "nixd",
             "pyright",
             "gopls",
+            "hls",
         })
     end,
 }

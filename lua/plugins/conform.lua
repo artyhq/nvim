@@ -10,6 +10,7 @@ return {
             javascript = { "prettier" },
             nix = { "nixpkgs-fmt" },
             go = { "goimports", "gofumpt" },
+            haskell = { "ormolu" },
         },
 
         format_on_save = {

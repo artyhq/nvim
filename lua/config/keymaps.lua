@@ -127,6 +127,22 @@ key("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep files"
 
 key({ "n", "v" }, "-", "<cmd>Oil<cr>", { desc = "Open Oil", silent = true })
 
+-- === Todoist ===
+key({ "n", "v" }, "<leader>cl", function()
+    local filepath = vim.fn.expand("%:p")
+
+    if filepath == "" then
+        vim.notify("No file path to copy", vim.log.levels.WARN)
+        return
+    end
+
+    local line = vim.fn.line(".")
+    local url = "nvim://" .. filepath .. ":" .. line
+
+    vim.fn.setreg("+", url)
+    vim.notify("Copied:\n" .. url, vim.log.levels.INFO, { title = "Todoist Deep Link" })
+end, { desc = "Copy nvim:// link to clipboard" })
+
 -- === Other ===
 key("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo" })
 key("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Prev todo" })
