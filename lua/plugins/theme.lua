@@ -6,11 +6,20 @@ return {
     --         vim.cmd("colorscheme gruber-darker")
     --     end,
     -- },
+    -- {
+    --     "miikanissi/modus-themes.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         vim.cmd("colorscheme modus_vivendi")
+    --     end,
+    -- },
     {
-        "miikanissi/modus-themes.nvim",
+        "gbprod/nord.nvim",
+        lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd("colorscheme modus_vivendi")
+            require("nord").setup({})
+            vim.cmd.colorscheme("nord")
         end,
     },
 }
