@@ -11,6 +11,9 @@ return {
             nix = { "nixpkgs-fmt" },
             go = { "goimports", "gofumpt" },
             haskell = { "ormolu" },
+            c = { "clang_format" },
+            cpp = { "clang_format" },
+            cs = { "csharpier" },
         },
 
         format_on_save = {

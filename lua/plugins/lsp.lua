@@ -8,6 +8,8 @@ return {
             "pyright",
             "gopls",
             "hls",
+            "clangd",
+            "omnisharp",
         })
     end,
 }
